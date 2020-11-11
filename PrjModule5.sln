@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrjModule5", "PrjModule5\PrjModule5.csproj", "{076A7357-AF89-486E-8F78-FA7F0C775B59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrjModule5", "PrjModule5\PrjModule5.csproj", "{076A7357-AF89-486E-8F78-FA7F0C775B59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "String Utilities", "String Utilities\String Utilities.csproj", "{42C5E8ED-D4E5-42C8-89E0-34F31A0C9E29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "String Utilities", "String Utilities\String Utilities.csproj", "{42C5E8ED-D4E5-42C8-89E0-34F31A0C9E29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "String Utilities.Tests", "String Utilities.Tests\String Utilities.Tests.csproj", "{039CECC0-CDCC-4BB3-A140-2A42C799016B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{42C5E8ED-D4E5-42C8-89E0-34F31A0C9E29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42C5E8ED-D4E5-42C8-89E0-34F31A0C9E29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42C5E8ED-D4E5-42C8-89E0-34F31A0C9E29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{039CECC0-CDCC-4BB3-A140-2A42C799016B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{039CECC0-CDCC-4BB3-A140-2A42C799016B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{039CECC0-CDCC-4BB3-A140-2A42C799016B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{039CECC0-CDCC-4BB3-A140-2A42C799016B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
