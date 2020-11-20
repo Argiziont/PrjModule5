@@ -1,419 +1,464 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 using Xunit;
 
 namespace String_Utilities.Tests
 {
     public class StringUtilsTests
     {
-        #region snippet_FindSubstring_ReturnsKeyValuePairWithPosition_InputIsCorrectString
+        #region snippet_FindSubstring_ReturnsWithPosition_InputIsCorrectString
+
         [Fact]
-        public void FindSubstring_ReturnsKeyValuePairWithPosition_InputIsCorrectString()
+        public void FindSubstring_ReturnsWithPosition_InputIsCorrectString()
         {
             // Arrange
-            string serachString = "1 12 123 1234 12345";
-            string substring = "123";
-            KeyValuePair<string, int> expected = new KeyValuePair<string, int>("123", 5);
-            StringUtils utils = new StringUtils();
+            const string searchString = "1 12 123 1234 12345";
+            const string substring = "123";
 
             // Act
-            var result = utils.FindSubstring(serachString, substring);
+            var result = StringUtils.FindSubstring(searchString, substring);
 
             // Assert
-            Assert.Equal(expected, result);
+            Assert.IsType<int>(result);
         }
+
         #endregion
-        #region snippet_FindSubstring_ReturnsKeyValuePairWith-1_InputSubstringWasNotFoundString
+
+        #region snippet_FindSubstring_ReturnsWith-1_InputSubstringWasNotFoundString
+
         [Fact]
-        public void FindSubstring_ReturnsKeyValuePairWith_1_InputSubstringWasNotFoundString()
+        public void FindSubstring_ReturnsWith_1_InputSubstringWasNotFoundString()
         {
             // Arrange
-            string serachString = "1 12 123 1234 12345";
-            string substring = "123456";
-            KeyValuePair<string, int> expected = new KeyValuePair<string, int>(null, -1);
-            StringUtils utils = new StringUtils();
+            const string searchString = "1 12 123 1234 12345";
+            const string substring = "1237";
 
             // Act
-            var result = utils.FindSubstring(serachString, substring);
+            var result = StringUtils.FindSubstring(searchString, substring);
 
             // Assert
-            Assert.Equal(expected, result);
+            Assert.IsType<int>(result);
         }
+
         #endregion
+
         #region snippet_FindSubstring_ThrowsStringUtilException_SearchStringIsNullString
+
         [Fact]
         public void FindSubstring_ThrowsStringUtilException_SearchStringIsNullString()
         {
             // Arrange
-            string serachString = null;
-            string substring = "123456";
-            StringUtils utils = new StringUtils();
+            const string searchString = null;
+            const string substring = "1237";
 
             // Act
-            void result() => utils.FindSubstring(serachString, substring);
+            void Result()
+            {
+                StringUtils.FindSubstring(searchString, substring);
+            }
 
             // Assert
-            Assert.Throws<StringUtilException>(result);
+            Assert.Throws<StringUtilException>(Result);
         }
+
         #endregion
+
         #region snippet_FindSubstring_ThrowsStringUtilException_SubstringIsNullString
+
         [Fact]
         public void FindSubstring_ThrowsStringUtilException_SubstringIsNullString()
         {
             // Arrange
-            string serachString = "1 12 123 1234 12345";
-            string substring = null;
-            StringUtils utils = new StringUtils();
+            const string searchString = "1 12 123 1234 12345";
+            const string substring = null;
 
             // Act
-            void result() => utils.FindSubstring(serachString, substring);
+            void Result()
+            {
+                StringUtils.FindSubstring(searchString, substring);
+            }
 
             // Assert
-            Assert.Throws<StringUtilException>(result);
+            Assert.Throws<StringUtilException>(Result);
         }
+
         #endregion
 
-        #region snippet_FindSubstring_ReturnsKeyValuePairWithPosition_InputIsCorrectStringBuilder
+        #region snippet_FindSubstring_ReturnsWithPosition_InputIsCorrectStringBuilder
+
         [Fact]
-        public void FindSubstring_ReturnsKeyValuePairWithPosition_InputIsCorrectStringBuilder()
+        public void FindSubstring_ReturnsWithPosition_InputIsCorrectStringBuilder()
         {
             // Arrange
-            StringBuilder serachString = new StringBuilder("1 12 123 1234 12345");
-            StringBuilder substring = new StringBuilder("123");
-            KeyValuePair<StringBuilder, int> expected = new KeyValuePair<StringBuilder, int>(new StringBuilder("123"), 5);
-            StringUtils utils = new StringUtils();
+            var searchString = new StringBuilder("1 12 123 1234 12345");
+            var substring = new StringBuilder("123");
 
             // Act
-            var result = utils.FindSubstring(serachString, substring);
+            var result = StringUtils.FindSubstring(searchString, substring);
 
             // Assert
-            Assert.Equal(expected.Key.ToString(), result.Key.ToString());
+            Assert.IsType<int>(result);
         }
+
         #endregion
-        #region snippet_FindSubstring_ReturnsKeyValuePairWith-1_InputSubstringWasNotFoundStringBuilder
+
+        #region snippet_FindSubstring_ReturnsWith-1_InputSubstringWasNotFoundStringBuilder
+
         [Fact]
-        public void FindSubstring_ReturnsKeyValuePairWith_1_InputSubstringWasNotFoundStringBuilder()
+        public void FindSubstring_ReturnsWith_1_InputSubstringWasNotFoundStringBuilder()
         {
             // Arrange
-            StringBuilder serachString = new StringBuilder("1 12 123 1234 12345");
-            StringBuilder substring = new StringBuilder("123456");
-            KeyValuePair<StringBuilder, int> expected = new KeyValuePair<StringBuilder, int>(null, -1);
-            StringUtils utils = new StringUtils();
+            var searchString = new StringBuilder("1 12 123 1234 12345");
+            var substring = new StringBuilder("123");
 
             // Act
-            var result = utils.FindSubstring(serachString, substring);
+            var result = StringUtils.FindSubstring(searchString, substring);
 
             // Assert
-            Assert.Equal(expected, result);
+            Assert.IsType<int>(result);
         }
+
         #endregion
+
         #region snippet_FindSubstring_ThrowsStringUtilException_SearchStringIsNullStringBuilder
+
         [Fact]
         public void FindSubstring_ThrowsStringUtilException_SearchStringIsNullStringBuilder()
         {
             // Arrange
-            StringBuilder serachString = null;
-            StringBuilder substring = new StringBuilder("123456");
-            StringUtils utils = new StringUtils();
+            var substring = new StringBuilder("123");
 
             // Act
-            void result() => utils.FindSubstring(serachString, substring);
+            void Result()
+            {
+                StringUtils.FindSubstring(null, substring);
+            }
 
             // Assert
-            Assert.Throws<StringUtilException>(result);
+            Assert.Throws<StringUtilException>(Result);
         }
+
         #endregion
+
         #region snippet_FindSubstring_ThrowsStringUtilException_SubstringIsNullStringBuilder
+
         [Fact]
         public void FindSubstring_ThrowsStringUtilException_SubstringIsNullStringBuilder()
         {
             // Arrange
-            StringBuilder serachString = new StringBuilder("1 12 123 1234 12345");
-            StringBuilder substring = null;
-            StringUtils utils = new StringUtils();
+            var searchString = new StringBuilder("1 12 123 1234 12345");
 
             // Act
-            void result() => utils.FindSubstring(serachString, substring);
+            void Result()
+            {
+                StringUtils.FindSubstring(searchString, null);
+            }
 
             // Assert
-            Assert.Throws<StringUtilException>(result);
+            Assert.Throws<StringUtilException>(Result);
         }
+
         #endregion
 
-        #region snippet_CountWords_ReturnsKeyValuePairWithPosition_InputIsCorrectString
+        #region snippet_CountWords_ReturnsWithPosition_InputIsCorrectString
+
         [Fact]
-        public void CountWords_ReturnsKeyValuePairWithPosition_InputIsCorrectString()
+        public void CountWords_ReturnsWithPosition_InputIsCorrectString()
         {
             // Arrange
-            string serachString = "1 12 123 1234 12345";
-            int expected = 5;
-            StringUtils utils = new StringUtils();
+            const string searchString = "1 12 123 1234 12345";
 
             // Act
-            var result = utils.CountWords(serachString);
+            var result = StringUtils.CountWords(searchString);
 
             // Assert
-            Assert.Equal(expected, result);
+            Assert.IsType<int>(result);
         }
+
         #endregion
+
         #region snippet_CountWords_ThrowsStringUtilException_SearchStringIsNullString
+
         [Fact]
         public void CountWords_ThrowsStringUtilException_SearchStringIsNullString()
         {
             // Arrange
-            string serachString = null;
-            StringUtils utils = new StringUtils();
 
             // Act
-            void result() => utils.CountWords(serachString);
+            static void Result()
+            {
+                StringUtils.CountWords((string) null);
+            }
 
             // Assert
-            Assert.Throws<StringUtilException>(result);
+            Assert.Throws<StringUtilException>(Result);
         }
+
         #endregion
 
-        #region snippet_CountWords_ReturnsKeyValuePairWithPosition_InputIsCorrectStringBulder
+        #region snippet_CountWords_ReturnsWithPosition_InputIsCorrectStringBulder
+
         [Fact]
-        public void CountWords_ReturnsKeyValuePairWithPosition_InputIsCorrectStringBulder()
+        public void CountWords_ReturnsWithPosition_InputIsCorrectStringBuilder()
         {
             // Arrange
-            StringBuilder serachString = new StringBuilder("1 12 123 1234 12345");
-            int expected = 5;
-            StringUtils utils = new StringUtils();
+            var searchString = new StringBuilder("1 12 123 1234 12345");
 
             // Act
-            var result = utils.CountWords(serachString);
+            var result = StringUtils.CountWords(searchString);
 
             // Assert
-            Assert.Equal(expected, result);
+            Assert.IsType<int>(result);
         }
+
         #endregion
+
         #region snippet_CountWords_ThrowsStringUtilException_SearchStringIsNullStringBulder
+
         [Fact]
-        public void CountWords_ThrowsStringUtilException_SearchStringIsNullStringBulder()
+        public void CountWords_ThrowsStringUtilException_SearchStringIsNullStringBuilder()
         {
             // Arrange
-            StringBuilder serachString = null;
-            StringUtils utils = new StringUtils();
 
             // Act
-            void result() => utils.CountWords(serachString);
+            static void Result()
+            {
+                StringUtils.CountWords((StringBuilder) null);
+            }
 
             // Assert
-            Assert.Throws<StringUtilException>(result);
+            Assert.Throws<StringUtilException>(Result);
         }
+
         #endregion
 
-        #region snippet_CountChars_ReturnsKeyValuePairWithPosition_InputIsCorrectString
+        #region snippet_CountChars_ReturnsWithPosition_InputIsCorrectString
+
         [Fact]
-        public void CountChars_ReturnsKeyValuePairWithPosition_InputIsCorrectString()
+        public void CountChars_ReturnsWithPosition_InputIsCorrectString()
         {
             // Arrange
-            string serachString = "Lorem ipsum";
-            int expectedWithSpaces = 11;
-            int expectedWithoutSpaces = 10;
-            int expectedOnlyVowels = 4;
-            int expectedOnlyConsonants = 6;
-
-            StringUtils utils = new StringUtils();
+            const string searchString = "Loren gypsum";
 
             // Act
-            var resultWithSpaces = utils.CountChars(serachString,StringSearchType.WithSpaces);
-            var resultWithoutSpaces = utils.CountChars(serachString, StringSearchType.WithoutSpaces);
-            var resultOnlyVowels = utils.CountChars(serachString, StringSearchType.OnlyVowels);
-            var resultOnlyConsonants = utils.CountChars(serachString, StringSearchType.OnlyConsonant);
+            var resultWithSpaces = StringUtils.CountChars(searchString, StringSearchType.WithSpaces);
+            var resultWithoutSpaces = StringUtils.CountChars(searchString, StringSearchType.WithoutSpaces);
+            var resultOnlyVowels = StringUtils.CountChars(searchString, StringSearchType.OnlyVowels);
+            var resultOnlyConsonants = StringUtils.CountChars(searchString, StringSearchType.OnlyConsonant);
 
             // Assert
-            Assert.Equal(expectedWithSpaces, resultWithSpaces);
-            Assert.Equal(expectedWithoutSpaces, resultWithoutSpaces);
-            Assert.Equal(expectedOnlyVowels, resultOnlyVowels);
-            Assert.Equal(expectedOnlyConsonants, resultOnlyConsonants);
+            Assert.IsType<int>(resultWithSpaces);
+            Assert.IsType<int>(resultWithoutSpaces);
+            Assert.IsType<int>(resultOnlyVowels);
+            Assert.IsType<int>(resultOnlyConsonants);
         }
+
         #endregion
+
         #region snippet_CountWords_ThrowsStringUtilException_SearchStringIsNullString
+
         [Fact]
         public void CountChars_ThrowsStringUtilException_SearchStringIsNullString()
         {
             // Arrange
-            string serachString = null;
-            StringUtils utils = new StringUtils();
 
             // Act
-            void result() => utils.CountChars(serachString,StringSearchType.WithSpaces);
+            static void Result()
+            {
+                StringUtils.CountChars((string) null, StringSearchType.WithSpaces);
+            }
 
             // Assert
-            Assert.Throws<StringUtilException>(result);
+            Assert.Throws<StringUtilException>(Result);
         }
+
         #endregion
 
-        #region snippet_CountWords_ReturnsKeyValuePairWithPosition_InputIsCorrectStringBulder
+        #region snippet_CountWords_ReturnsWithPosition_InputIsCorrectStringBulder
+
         [Fact]
-        public void CountChars_ReturnsKeyValuePairWithPosition_InputIsCorrectStringBulder()
+        public void CountChars_ReturnsWithPosition_InputIsCorrectStringBuilder()
         {
             // Arrange
-            StringBuilder serachString = new StringBuilder("Lorem ipsum");
-            int expectedWithSpaces = 11;
-            int expectedWithoutSpaces = 10;
-            int expectedOnlyVowels = 4;
-            int expectedOnlyConsonants = 6;
+            var searchString = new StringBuilder("Loren gypsum");
 
-            StringUtils utils = new StringUtils();
 
             // Act
-            var resultWithSpaces = utils.CountChars(serachString, StringSearchType.WithSpaces);
-            var resultWithoutSpaces = utils.CountChars(serachString, StringSearchType.WithoutSpaces);
-            var resultOnlyVowels = utils.CountChars(serachString, StringSearchType.OnlyVowels);
-            var resultOnlyConsonants = utils.CountChars(serachString, StringSearchType.OnlyConsonant);
+            var resultWithSpaces = StringUtils.CountChars(searchString, StringSearchType.WithSpaces);
+            var resultWithoutSpaces = StringUtils.CountChars(searchString, StringSearchType.WithoutSpaces);
+            var resultOnlyVowels = StringUtils.CountChars(searchString, StringSearchType.OnlyVowels);
+            var resultOnlyConsonants = StringUtils.CountChars(searchString, StringSearchType.OnlyConsonant);
 
             // Assert
-            Assert.Equal(expectedWithSpaces, resultWithSpaces);
-            Assert.Equal(expectedWithoutSpaces, resultWithoutSpaces);
-            Assert.Equal(expectedOnlyVowels, resultOnlyVowels);
-            Assert.Equal(expectedOnlyConsonants, resultOnlyConsonants);
+            Assert.IsType<int>(resultWithSpaces);
+            Assert.IsType<int>(resultWithoutSpaces);
+            Assert.IsType<int>(resultOnlyVowels);
+            Assert.IsType<int>(resultOnlyConsonants);
         }
+
         #endregion
+
         #region snippet_CountWords_ThrowsStringUtilException_SearchStringIsNullStringBulder
+
         [Fact]
-        public void CountChars_ThrowsStringUtilException_SearchStringIsNullStringBulder()
-        {  // Arrange
-            StringBuilder serachString = null;
-            StringUtils utils = new StringUtils();
-
-            // Act
-            void result() => utils.CountChars(serachString, StringSearchType.WithSpaces);
-
-            // Assert
-            Assert.Throws<StringUtilException>(result);
-        }
-        #endregion
-
-        #region snippet_FindShortestWord_ReturnsKeyValuePairWithPosition_InputIsCorrectString
-        [Fact]
-        public void FindShortestWord_ReturnsKeyValuePairWithPosition_InputIsCorrectString()
+        public void CountChars_ThrowsStringUtilException_SearchStringIsNullStringBuilder()
         {
             // Arrange
-            string serachString = "1 12 123 1234 12345";
-            string expected = "1";
-            StringUtils utils = new StringUtils();
 
             // Act
-            var result = utils.FindShortestWord(serachString);
+            static void Result()
+            {
+                StringUtils.CountChars((StringBuilder) null, StringSearchType.WithSpaces);
+            }
 
             // Assert
-            Assert.Equal(expected, result.Key);
+            Assert.Throws<StringUtilException>(Result);
         }
+
         #endregion
+
+        #region snippet_FindShortestWord_ReturnsWithPosition_InputIsCorrectString
+
+        [Fact]
+        public void FindShortestWord_ReturnsWithPosition_InputIsCorrectString()
+        {
+            // Arrange
+            const string searchString = "1 12 123 1234 12345";
+
+            // Act
+            var result = StringUtils.FindShortestWord(searchString);
+
+            // Assert
+            Assert.IsType<string>(result);
+        }
+
+        #endregion
+
         #region snippet_FindShortestWord_ThrowsStringUtilException_SearchStringIsNullString
+
         [Fact]
         public void FindShortestWord_ThrowsStringUtilException_SearchStringIsNullString()
         {
             // Arrange
-            string serachString = null;
-            StringUtils utils = new StringUtils();
 
             // Act
-            void result() => utils.FindShortestWord(serachString);
+            static void Result()
+            {
+                StringUtils.FindShortestWord((string) null);
+            }
 
             // Assert
-            Assert.Throws<StringUtilException>(result);
+            Assert.Throws<StringUtilException>(Result);
         }
+
         #endregion
 
-        #region snippet_FindShortestWord_ReturnsKeyValuePairWithPosition_InputIsCorrectStringBulder
+        #region snippet_FindShortestWord_ReturnsWithPosition_InputIsCorrectStringBulder
+
         [Fact]
-        public void FindShortestWord_ReturnsKeyValuePairWithPosition_InputIsCorrectStringBulder()
+        public void FindShortestWord_ReturnsWithPosition_InputIsCorrectStringBuilder()
         {
             // Arrange
-            StringBuilder serachString = new StringBuilder("1 12 123 1234 12345");
-            StringBuilder expected = new StringBuilder("1");
-            StringUtils utils = new StringUtils();
+            var searchString = new StringBuilder("1 12 123 1234 12345");
 
             // Act
-            var result = utils.FindShortestWord(serachString);
+            var result = StringUtils.FindShortestWord(searchString);
 
             // Assert
-            Assert.Equal(expected.ToString(), result.Key.ToString());
+            Assert.IsType<StringBuilder>(result);
         }
+
         #endregion
+
         #region snippet_FindShortestWord_ThrowsStringUtilException_SearchStringIsNullStringBulder
+
         [Fact]
-        public void FindShortestWord_ThrowsStringUtilException_SearchStringIsNullStringBulder()
+        public void FindShortestWord_ThrowsStringUtilException_SearchStringIsNullStringBuilder()
         {
             // Arrange
-            StringBuilder serachString = null;
-            StringUtils utils = new StringUtils();
 
             // Act
-            void result() => utils.FindShortestWord(serachString);
+            static void Result()
+            {
+                StringUtils.FindShortestWord((StringBuilder) null);
+            }
 
             // Assert
-            Assert.Throws<StringUtilException>(result);
+            Assert.Throws<StringUtilException>(Result);
         }
+
         #endregion
 
-        #region snippet_FindLongestWord_ReturnsKeyValuePairWithPosition_InputIsCorrectString
+        #region snippet_FindLongestWord_ReturnsWithPosition_InputIsCorrectString
+
         [Fact]
-        public void FindLongestWord_ReturnsKeyValuePairWithPosition_InputIsCorrectString()
+        public void FindLongestWord_ReturnsWithPosition_InputIsCorrectString()
         {
             // Arrange
-            string serachString = "1 12 123 1234 12345";
-            string expected = "12345";
-            StringUtils utils = new StringUtils();
+            const string searchString = "1 12 123 1234 12345";
+            const string expected = "12345";
 
             // Act
-            var result = utils.FindLongestWord(serachString);
+            var result = StringUtils.FindLongestWord(searchString);
 
             // Assert
-            Assert.Equal(expected, result.Key);
+            Assert.Equal(expected, result);
         }
+
         #endregion
+
         #region snippet_FindLongestWord_ThrowsStringUtilException_SearchStringIsNullString
+
         [Fact]
         public void FindLongestWord_ThrowsStringUtilException_SearchStringIsNullString()
         {
             // Arrange
-            string serachString = null;
-            StringUtils utils = new StringUtils();
 
             // Act
-            void result() => utils.FindLongestWord(serachString);
+            static void Result()
+            {
+                StringUtils.FindLongestWord((string) null);
+            }
 
             // Assert
-            Assert.Throws<StringUtilException>(result);
+            Assert.Throws<StringUtilException>(Result);
         }
+
         #endregion
 
-        #region snippet_FindLongestWord_ReturnsKeyValuePairWithPosition_InputIsCorrectStringBulder
+        #region snippet_FindLongestWord_ReturnsWithPosition_InputIsCorrectStringBulder
+
         [Fact]
-        public void FindLongestWord_ReturnsKeyValuePairWithPosition_InputIsCorrectStringBulder()
+        public void FindLongestWord_ReturnsWithPosition_InputIsCorrectStringBuilder()
         {
             // Arrange
-            StringBuilder serachString = new StringBuilder("1 12 123 1234 12345");
-            StringBuilder expected = new StringBuilder("12345");
-            StringUtils utils = new StringUtils();
+            var searchString = new StringBuilder("1 12 123 1234 12345");
 
             // Act
-            var result = utils.FindLongestWord(serachString);
+            var result = StringUtils.FindLongestWord(searchString);
 
             // Assert
-            Assert.Equal(expected.ToString(), result.Key.ToString());
+            Assert.IsType<StringBuilder>(result);
         }
+
         #endregion
+
         #region snippet_FindLongestWord_ThrowsStringUtilException_SearchStringIsNullStringBulder
+
         [Fact]
-        public void FindLongestWord_ThrowsStringUtilException_SearchStringIsNullStringBulder()
+        public void FindLongestWord_ThrowsStringUtilException_SearchStringIsNullStringBuilder()
         {
             // Arrange
-            StringBuilder serachString = null;
-            StringUtils utils = new StringUtils();
 
             // Act
-            void result() => utils.FindLongestWord(serachString);
+            static void Result()
+            {
+                StringUtils.FindLongestWord((StringBuilder) null);
+            }
 
             // Assert
-            Assert.Throws<StringUtilException>(result);
+            Assert.Throws<StringUtilException>(Result);
         }
+
         #endregion
     }
 }
